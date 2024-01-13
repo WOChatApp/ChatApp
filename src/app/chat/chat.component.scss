@@ -1,0 +1,125 @@
+.chat-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.message-container {
+  padding: 0 10 0 10;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10;
+  background-color: white;
+  border-top: 1px solid #ccc;
+  border-radius: 5;
+  align-items: center;
+}
+
+.text-input {
+  flex: 1;
+  margin-right: 10;
+  border: 1px solid #ccc;
+  border-radius: 5;
+  padding: 5;
+  font-size: 16;
+}
+
+.right-message {
+  font-size: 17;
+  background-color: #E7F0F7;
+  color: black;
+  border-radius: 5;
+  padding: 5;
+  // margin-bottom: 5;
+  horizontal-align: right;
+  max-width: 70%;
+  text-overflow: unset;
+  white-space: normal;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.left-message {
+  border-radius: 5;
+  font-size: 17;
+  background-color: #efefef;
+  color: black;
+  padding: 5;
+  // margin-bottom: 5;
+  horizontal-align: left;
+  max-width: 70%;
+  text-overflow: unset;
+  white-space: normal;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+
+.loader {
+  color: blue;
+}
+
+.message-row-right {
+  margin-left: 10px;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-size: 10;
+}
+
+.message-row-left {
+  margin-right: 10px;
+  padding-left: 5;
+  flex-direction: row;
+  align-items: center;
+  font-size: 10;
+}
+
+.name {
+  color: rgb(33, 72, 156);
+  font-weight: 900;
+  margin-left: 25%;
+}
+
+.light-overlay {
+  // position: absolute;
+  background-color: white;
+  // display: flex;
+  // z-index: 1000;
+}
+
+.left-message-time {
+  font-size: 12;
+}
+
+.right-message-time {
+  font-size: 12;
+}
+
+.label-delete {
+  text-align: center;
+  margin-bottom: 100;
+  margin-right: 13;
+}
+
+.fas {
+  font-family: "Font Awesome 5 Free", "fa-solid-900";
+  font-weight: 900;
+}
+
+.action-bar {
+  color: black;
+  background-color: rgba(249, 249, 249, 0.94);
+}
+
+.messageBox {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.profile-img {
+  height: 35;
+  width: 35;
+  border-radius: 35;
+}

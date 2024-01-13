@@ -1,0 +1,60 @@
+.container {
+  // background-image: url("~/images/background_image.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 20;
+  // flex-grow: 2;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.input-field {
+  width: 100%;
+  margin-bottom: 10;
+  padding: 5;
+  background-color: transparent;
+  border-bottom: 1px solid #D4CCCC;
+  color: white;
+}
+
+.button {
+  width: 100%;
+  padding: 10;
+  background-color: #2f85f0;
+  color: white;
+  border-radius: 5;
+  text-align: center;
+}
+
+.profile-img {
+  border-radius: 50 !important;
+  // box-shadow:
+  //   0 0 20px rgba(0, 0, 0, 0.7),
+  //   0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.imageFront {
+  border-radius: 50 !important;
+  overflow: hidden;
+}
+
+.input {
+  color: black;
+  font-size: 15px;
+}
+
+.button-signup {
+  width: 50%;
+  border-radius: 5;
+  background-color: white;
+}
+
+.light-overlay {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  z-index: 1000;
+}
