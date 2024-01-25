@@ -32,4 +32,5 @@ export interface MessageModel {
   isRemoved?: boolean;
   messageId: string;
   type?: string;
+  seen?: boolean;
 }

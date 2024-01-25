@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, switchMap, tap } from "rxjs/operators";
+import { catchError, map, mergeMap, switchMap, tap } from "rxjs/operators";
 import { from, of } from "rxjs";
 
 import { UserService } from "../../services/user.service";
@@ -62,20 +62,10 @@ export class UserEffects {
   updateProfile$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.updateProfile),
-      switchMap((action) =>
-        from(
-          this.userService.updateProfile(
-            action.email,
-            action.firstName,
-            action.lastName
-          )
-        ).pipe(
-          tap((updatedData) => console.log("Updated Data:", updatedData)),
-          map(() => UserActions.updateProfileSuccess(action)),
-          catchError((error) => {
-            console.error("Update Profile Error:", error);
-            return of(UserActions.updateProfileFailure({ error }));
-          })
+      mergeMap((action) =>
+        this.userService.updateProfile(action.user).pipe(
+          map((user) => UserActions.updateProfileSuccess({ user })),
+          catchError((error) => of(UserActions.updateProfileFailure({ error })))
         )
       )
     )

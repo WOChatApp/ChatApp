@@ -86,18 +86,15 @@ export const userReducer = createReducer(
     sendPasswordResetLinkError: error,
   })),
 
-  on(
-    UserActions.updateProfileSuccess,
-    (state, { firstName, lastName, email }) => ({
-      ...state,
-      email,
-      firstName,
-      lastName,
-      error: null,
-    })
-  ),
+  on(UserActions.updateProfile, (state) => state),
+  on(UserActions.updateProfileSuccess, (state, { user }) => ({
+    ...state,
+    user,
+    error: null,
+  })),
   on(UserActions.updateProfileFailure, (state, { error }) => ({
     ...state,
+    user: null,
     error,
   }))
 );

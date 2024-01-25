@@ -101,19 +101,20 @@ export class UserService {
       throw error;
     }
   }
-  async updateProfile(
-    email: string,
-    firstName: string,
-    lastName: string
-  ): Promise<void> {
-    const currentUser = await this.getCurrentUser();
-    const userUid = currentUser.uid;
-    console.log(userUid);
-
-    return firebase().firestore().collection("users").doc(userUid).update({
-      email,
-      firstName,
-      lastName,
+  updateProfile(user: any): Observable<any> {
+    return new Observable((observer) => {
+      firebase()
+        .firestore()
+        .collection("users")
+        .doc(user.userUid)
+        .update(user)
+        .then(() => {
+          observer.next(user);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
     });
   }
 

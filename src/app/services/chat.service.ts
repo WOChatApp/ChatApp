@@ -42,10 +42,10 @@ export class ChatService {
       return forkJoin(mediaUploadObservables).pipe(
         mergeMap((mediaUploadResults: any[]) => {
           if (mediaUploadResults.length === 0) {
-            console.log("No mediaUploadResults, not sending the message.");
+            // console.log("No mediaUploadResults, not sending the message.");
             return EMPTY;
           }
-          console.log("mediaUploadResults", mediaUploadResults);
+          // console.log("mediaUploadResults", mediaUploadResults);
           const updatedMessageData = {
             ...messageObj,
             medias: mediaUploadResults,
@@ -147,9 +147,9 @@ export class ChatService {
           task.on(
             "state_changed" as any,
             (taskSnapshot) => {
-              console.log(
-                `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`
-              );
+              // console.log(
+              //   `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`
+              // );
             },
             (error) => {
               console.error("Error during upload:", error);
@@ -165,7 +165,7 @@ export class ChatService {
                     url,
                     fileType: media.fileType,
                   };
-                  console.log("result", result);
+                  // console.log("result", result);
                   return resolve(result);
                 })
                 .catch((urlError) => {
@@ -217,7 +217,7 @@ export class ChatService {
   }
 
   deleteMessage(channelId: string, messageID: string): Promise<void> {
-    console.log("channelId", channelId, messageID);
+    // console.log("channelId", channelId, messageID);
     return firebase()
       .firestore()
       .collection("conversations")
@@ -226,7 +226,7 @@ export class ChatService {
       .doc(messageID)
       .delete()
       .then(() => {
-        console.log("Message deleted successfully");
+        // console.log("Message deleted successfully");
       })
       .catch((error) => {
         console.error("Error deleting message:", error);

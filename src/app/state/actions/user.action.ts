@@ -1,4 +1,5 @@
 import { createAction, props } from "@ngrx/store";
+import { User } from "../interfaces/user.interface";
 
 export const loadUserData = createAction("[User] Load User Data");
 export const loadUserDataSuccess = createAction(
@@ -45,16 +46,16 @@ export const sendPasswordResetLinkFailure = createAction(
 );
 
 export const updateProfile = createAction(
-  "[Profile] Update Profile",
-  props<{ firstName: string; lastName: string; email: string }>()
+  "[User] Update Profile",
+  props<{ user: any }>()
 );
 
 export const updateProfileSuccess = createAction(
-  "[Profile] Update Profile Success",
-  props<{ firstName: string; lastName: string; email: string }>()
+  "[User] Update Profile Success",
+  props<{ user: any }>()
 );
 
 export const updateProfileFailure = createAction(
-  "[Profile] Update Profile Failure",
+  "[User] Update Profile Failure",
   props<{ error: any }>()
 );

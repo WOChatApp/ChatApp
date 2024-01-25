@@ -1,4 +1,8 @@
 <StackLayout backgroundColor="rgba(249, 249, 249, 0.94)">
+    <FlexboxLayout *ngIf="isLoading" height="100%" justifyContent="center" alignItems="center" class="light-overlay">
+        <ActivityIndicator [busy]="isLoading" color="blue" width="36" height="36" horizontalAlignment="center">
+        </ActivityIndicator>
+    </FlexboxLayout>
     <ActionBar [text]="title" class="action-bar" flat="true">
         <StackLayout horizontalAlignment="left" verticalAlignment="center" orientation="horizontal">
             <Label verticalAlignment="center" marginLeft="15" fontSize="20" fontWeight="500" color="black"
@@ -6,23 +10,28 @@
         </StackLayout>
         <NavigationButton ios:visibility="collapse" (tap)="goBack()" icon="font://&#xf053;" class="fas">
         </NavigationButton>
+        <ActionItem position="left">
+            <GridLayout width="50">
+                <Image width="30" height="30" android:marginBottom="3" src="~/images/logout.png"></Image>
+            </GridLayout>
+        </ActionItem>
     </ActionBar>
+
     <AbsoluteLayout>
-        <StackLayout class="profile-background" [backgroundImage]="user?.profileImage"></StackLayout>
-        <!-- <StackLayout class="profile-overlay"></StackLayout> -->
+        <StackLayout class=" profile-background" [backgroundImage]="user?.profileImage">
+        </StackLayout>
 
         <AbsoluteLayout width="100%">
-            <StackLayout class="profile-img" borderColor="white" borderWidth="3">
-                <Image [src]="user?.profileImage" class="img-tag" stretch="aspectFill"></Image>
+            <StackLayout class="profile-img" borderColor="white" borderWidth="3" (tap)="menuItems()">
+                <Image [src]="selectedImage ? selectedImage : user?.profileImage" class="img-tag" stretch="aspectFill">
+                </Image>
             </StackLayout>
-
-            <StackLayout class="profile-img" borderColor="white" borderWidth="3" *ngIf="isEdit"
-                backgroundColor="rgba(0,0,0,0.5)">
+            <StackLayout class="profile-img" borderColor="white" borderWidth="3" backgroundColor="rgba(0,0,0,0.3)">
             </StackLayout>
         </AbsoluteLayout>
 
-        <AbsoluteLayout *ngIf="isEdit">
-            <StackLayout *ngIf="isEdit">
+        <AbsoluteLayout>
+            <StackLayout>
                 <Image src="~/images/white_camera.png" width="40" height="40" marginTop="140" marginLeft="185"
                     horizontalAlignment="center" verticalAlignment="center">
                 </Image>
@@ -36,18 +45,15 @@
     <GridLayout rows="auto, auto, auto, auto" marginTop="30">
         <StackLayout orientation="horizontal" row="0">
             <TextField borderColor="grey" [(ngModel)]="firstName" [text]="user?.firstName" class="input-field"
-                padding="10" borderWidth="1" hint="First Name" borderRadius="5" [isEnabled]="isEdit"></TextField>
+                padding="10" borderWidth="1" hint="First Name" borderRadius="5"></TextField>
             <TextField borderColor="grey" [(ngModel)]="lastName" [text]="user?.lastName" padding="10"
-                class="input-field" borderWidth="1" hint="Last Name" borderRadius="5" [isEnabled]="isEdit"></TextField>
+                class="input-field" borderWidth="1" hint="Last Name" borderRadius="5"></TextField>
         </StackLayout>
 
         <TextField row="1" borderColor="grey" [(ngModel)]="email" [text]="user?.email" (textChange)="validateForm()"
-            class="input-email-field" padding="10" borderWidth="1" hint="Email" borderRadius="5" [isEnabled]="isEdit">
+            class="input-email-field" padding="10" borderWidth="1" hint="Email" borderRadius="5">
         </TextField>
-        <!-- <TextField row="2" borderColor="grey" class="input-email-field" padding="10" borderWidth="1" hint="Password" borderRadius="5" secure="true"></TextField> -->
         <Button row="2" text="Update Profile" class="input-email-field" color="white" backgroundColor="#2f85f0"
             padding="10" borderRadius="5" (tap)="onUpdateProfile()"></Button>
-
     </GridLayout>
-
 </StackLayout>

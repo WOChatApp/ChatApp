@@ -6,18 +6,18 @@
       marginLeft="65"></Image>
   </AbsoluteLayout>
   <StackLayout class="input-field">
-    <TextField class="input" hint="First Name" maxLength="20" [(ngModel)]="firstName" color="white"></TextField>
+    <TextField class="input" hint="First Name" maxLength="20" [(ngModel)]="firstName" color="black"></TextField>
   </StackLayout>
   <StackLayout class="input-field">
-    <TextField class="input" hint="Last Name" maxLength="20" [(ngModel)]="lastName" color="white"></TextField>
+    <TextField class="input" hint="Last Name" maxLength="20" [(ngModel)]="lastName" color="black"></TextField>
   </StackLayout>
   <StackLayout class="input-field">
     <TextField class="input" hint="Email" maxLength="50" [(ngModel)]="email" (textChange)="validateForm()"
-      color="white"></TextField>
+      color="black"></TextField>
   </StackLayout>
   <StackLayout class="input-field">
     <TextField class="input" hint="Password" secure="true" name="password" maxLength="20" [(ngModel)]="password"
-      (textChange)="validateForm()" color="white"></TextField>
+      (textChange)="validateForm()" color="black"></TextField>
   </StackLayout>
   <Button text="Signup" class="button" (tap)="signup()" [isEnabled]="isFormValid"></Button>
   <Button text="Go to Login" nsRouterLink="/login" class="button"></Button>

@@ -10,7 +10,6 @@ import { Dialogs } from "@nativescript/core";
 import { ChatListService } from "../services/chat-list.service";
 import { ChatService } from "../services/chat.service";
 import { ChannelModel } from "../state/class/message.class";
-import { action } from "@nativescript/core";
 
 @Component({
   selector: "ns-signup",

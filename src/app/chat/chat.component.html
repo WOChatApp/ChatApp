@@ -16,8 +16,8 @@
           <FlexboxLayout
             [ngClass]="{'message-row-right': message?.creator?.id === currentUserId, 'message-row-left': message?.creator?.id !== currentUserId}"
             *ngIf="!message.dateSeparator">
-            <Image class="profile-img" [src]="user?.profileImage ? user?.profileImage : '~/images/user2.png'"
-              stretch="aspectFill" *ngIf="message?.creator?.id !== currentUserId" marginRight="5"></Image>
+            <!-- <Image class="profile-img" [src]="user?.profileImage ? user?.profileImage : '~/images/user2.png'"
+              stretch="aspectFill" *ngIf="message?.creator?.id !== currentUserId" marginRight="5"></Image> -->
             <StackLayout boxShadow="rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px"
               [ngClass]="{'right-message': message?.creator?.id === currentUserId, 'left-message': message?.creator?.id !== currentUserId}"
               (longPress)="onLongPress($event, message)" padding="5 20 5 10"
@@ -102,7 +102,7 @@
             <StackLayout row="0" col="1" orientation="horizontal" verticalAlignment="center" borderWidth="1"
               borderColor="#f6f6f6" borderRadius="15" height="auto" backgroundColor="#F2F4F8" marginRight="15">
               <TextView hint="Message" padding="5" autocorrect="true" fontSize="14" width="90%" textWrap="true"
-                color="black" minHeight="40" [(ngModel)]="newMessage"></TextView>
+                color="black" height="40" [(ngModel)]="newMessage"></TextView>
             </StackLayout>
             <StackLayout row="0" col="2" verticalAlignment="center">
               <Image src="~/images/send-message.png" width="30" height="29" (tap)="sendMessage()"></Image>
@@ -114,7 +114,7 @@
 
     <FlexboxLayout height="100%" justifyContent="center" alignItems="center" class="light-overlay"
       *ngIf="totalMessages === 0 && !isLoading">
-      <Image src="~/images/noChat.png" height="100" width="100" stretch="aspectFill"
+      <Image src="~/images/noChat.png" height="120" width="120" stretch="aspectFill"
         *ngIf="totalMessages === 0 && !isLoading"></Image>
     </FlexboxLayout>
 

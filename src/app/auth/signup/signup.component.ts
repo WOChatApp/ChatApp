@@ -1,14 +1,18 @@
 import { Component } from "@angular/core";
 import { RouterExtensions } from "@nativescript/angular";
 import { UserService } from "~/app/services/user.service";
-import { Feedback, FeedbackType, FeedbackPosition } from "nativescript-feedback";
+import {
+  Feedback,
+  FeedbackType,
+  FeedbackPosition,
+} from "nativescript-feedback";
 import { Page } from "@nativescript/core";
-import * as imagePickerPlugin from '@nativescript/imagepicker';
+import * as imagePickerPlugin from "@nativescript/imagepicker";
 
 @Component({
   selector: "ns-signup",
   templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.scss"]
+  styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent {
   firstName: string = "";
@@ -19,7 +23,11 @@ export class SignupComponent {
   isFormValid: boolean = false;
   isLoading: boolean = false;
   selectedImage: string = "";
-  constructor(private routerExtensions: RouterExtensions, private userService: UserService, private page: Page) {
+  constructor(
+    private routerExtensions: RouterExtensions,
+    private userService: UserService,
+    private page: Page
+  ) {
     this.feedback = new Feedback();
   }
 
@@ -37,7 +45,13 @@ export class SignupComponent {
     this.isLoading = true;
     try {
       if (this.isFormValid) {
-        if (this.firstName && this.lastName && this.email && this.password && this.selectedImage) {
+        if (
+          this.firstName &&
+          this.lastName &&
+          this.email &&
+          this.password &&
+          this.selectedImage
+        ) {
           await this.userService.signup(
             this.firstName,
             this.lastName,
@@ -46,18 +60,19 @@ export class SignupComponent {
             this.selectedImage
           );
           this.feedback.success({
-            message: "User Registered successfull",
+            message: "User Registered successfully",
             duration: 3000,
             type: FeedbackType.Success,
             position: FeedbackPosition.Top,
           });
           setTimeout(() => {
             this.isLoading = false;
-            this.routerExtensions.navigate(['/login']);
+            this.routerExtensions.navigate(["/login"]);
           }, 200);
         } else {
           this.feedback.error({
-            message: "Please fill in the required fields: Name, Email, Password, and Profile Image.",
+            message:
+              "Please fill in the required fields: Name, Email, Password, and Profile Image.",
             duration: 3000,
             type: FeedbackType.Error,
             position: FeedbackPosition.Top,
@@ -71,8 +86,7 @@ export class SignupComponent {
   }
 
   async signupWithFacebook() {
-    console.log('facebook');
-
+    console.log("facebook");
   }
 
   async signupWithGoogle() {
@@ -88,9 +102,9 @@ export class SignupComponent {
 
   onUploadMedia() {
     var context = imagePickerPlugin.create({
-      mode: "single"
+      mode: "single",
     });
-  
+
     context
       .authorize()
       .then(() => {
@@ -102,7 +116,7 @@ export class SignupComponent {
         });
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
   }
 }
